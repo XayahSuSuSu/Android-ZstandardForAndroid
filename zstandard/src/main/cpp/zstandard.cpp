@@ -10,7 +10,7 @@ extern "C" JNIEXPORT jstring JNICALL
 Java_com_xayah_zstandard_native_Zstandard_version(
         JNIEnv *env,
         jobject) {
-
-    LOG_D("version: %s", ZSTD_VERSION_STRING);
-    return env->NewStringUTF(ZSTD_VERSION_STRING);
+    std::string version = ZSTD_versionString();
+    LOG_D("version: %s", version.c_str());
+    return env->NewStringUTF(version.c_str());
 }
